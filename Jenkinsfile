@@ -14,10 +14,16 @@ pipeline {
         }
 
         stage('2. Application Build & Test') {
-            steps {
-                bat ' C:\\Users\\STUDENT\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m py_compile app.py'
-            }
-        }
+    steps {
+        bat '''
+            echo Checking Python installation...
+            "C:\\Users\\STUDENT\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" --version
+
+            echo Compiling Python application...
+            "C:\\Users\\STUDENT\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m py_compile app.py
+        '''
+    }
+}
 
         stage('3. Build & Tag Docker Image') {
             steps {
